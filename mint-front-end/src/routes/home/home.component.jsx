@@ -2,6 +2,8 @@ import React from 'react';
 import { SyledHome, StyledHomeContainer, StyledHomeTitle, StyledHomeData, StyledHomeDescription } from './home.styles'
 import Features from '../../components/features/features.component';
 import Services from '../../components/services-component/services.component';
+import ContactUs from '../../components/contact/contact.component';
+import Footer from '../../components/footer/footer.component';
 
 const Home = () => {
     return (
@@ -25,6 +27,8 @@ const Home = () => {
             ["Find mentors,investors and more.", "Get your ideas into action."]]} />
 
             <Services />
+            <ContactUs />
+            <Footer />
         </SyledHome>
     )
 }

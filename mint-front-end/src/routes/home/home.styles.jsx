@@ -22,6 +22,7 @@ export const StyledHomeTitle = styled.h1`
     color: #fff;
     font-size: 4rem;
     line-height: 120%;
+    margin-left: 2rem;
     margin-bottom: 1.25rem;
     width: 100%;
     font-family: 'Poppins', sans-serif;
@@ -34,6 +35,7 @@ export const StyledHomeData = styled.div`
 export const StyledHomeDescription = styled.p`
     color: ${textColorLight};
     margin-top: 2rem;
+    margin-left: 2rem;
     margin-bottom: 2rem;
     font-size: 1rem;
     font-family: 'Poppins', sans-serif;

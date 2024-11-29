@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Outlet } from "react-router";
 import AppBar from "@mui/material/AppBar"
 import { Tab, Tabs, Toolbar, Typography, Box } from "@mui/material";
@@ -6,9 +6,27 @@ import 'boxicons';
 
 
 const ResponsiveNavBar = () => {
+    const [isScrolled, setIsScrolled] = useState();
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 50);
+        }
+
+        window.addEventListener("scroll", handleScroll);
+    }, []);
     return (
         <Fragment>
-            <AppBar sx={{ backgroundColor: 'transparent', paddingTop: 1, paddingLeft: 17, paddingRight: 17, boxShadow: 0 }}>
+            <AppBar sx={{
+                backgroundColor: isScrolled ? "white" : "transparent",
+                color: isScrolled ? "black" : "white",
+                paddingTop: 1,
+                paddingLeft: 17,
+                paddingRight: 17,
+                boxShadow: isScrolled ? " box-shadow: 0 8px 24px hsla(228, 66%, 45%, .15)" : 0,
+                transition: "background-color 0.3s ease, color 0.3s ease",
+                fontFamily: "Poppins"
+            }}>
                 <Box>
                     <Toolbar sx={{ zIndex: '1' }}>
                         <Typography>MINT</Typography>
