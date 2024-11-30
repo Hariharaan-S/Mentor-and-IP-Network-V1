@@ -5,6 +5,12 @@ import SignUp from './components/register/register.component';
 import { Routes, Route, Navigate } from "react-router-dom"
 import Home from './routes/home/home.component';
 import ResponsiveNavBar from './routes/responsiveappbar/responsiveappbar.component';
+import IprStorage from './routes/ipr-storage/ipr-storage.component';
+import Patent from './routes/patent/patent.component';
+import Forum from './routes/forum/forum.component';
+import TrendingTopics from "../src/components/trending-topics/trending-topic.component"
+import { topics, trends, people } from "./utilities/forum-details.utils"
+import MentorFind from './routes/mentor/mentor.component';
 
 function App() {
   return (
@@ -16,6 +22,12 @@ function App() {
       </Route>
       <Route path='home' element={<ResponsiveNavBar />}>
         <Route path='individual' element={<Home />}></Route>
+        <Route path='iprManagement' element={<IprStorage />}></Route>
+        <Route path='patent' element={<Patent />}></Route>
+        <Route path='forum' element={<Forum />}>
+          <Route index element={<TrendingTopics topics={topics} trends={trends} people={people} />}></Route>
+          <Route path='mentor' element={<MentorFind />}></Route>
+        </Route>
       </Route>
 
     </Routes>

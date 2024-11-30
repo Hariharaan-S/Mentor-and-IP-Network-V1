@@ -217,7 +217,7 @@ const ContactUs = () => {
                                     }}>Know About Us</Typography>
                                 </Grid2>
                             </div>
-                            <Button styles={{ marginTop: "2rem" }} content={"Email"} />
+                            <Button styles={{ marginTop: "2rem" }} content={"Learn More"} />
                         </Grid2>
                     </Grid2>
 
