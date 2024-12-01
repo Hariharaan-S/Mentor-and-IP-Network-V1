@@ -1,37 +1,40 @@
 import './App.css';
 import SignIn from './components/sign-in/sign-in.component';
 import SignUp from './components/register/register.component';
-// import Authentication from './routes/authentication/authentication.component';
-import { Routes, Route, Navigate } from "react-router-dom"
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from './routes/home/home.component';
 import ResponsiveNavBar from './routes/responsiveappbar/responsiveappbar.component';
 import IprStorage from './routes/ipr-storage/ipr-storage.component';
 import Patent from './routes/patent/patent.component';
 import Forum from './routes/forum/forum.component';
-import TrendingTopics from "../src/components/trending-topics/trending-topic.component"
-import { topics, trends, people } from "./utilities/forum-details.utils"
+import TrendingTopics from "./components/trending-topics/trending-topic.component";
+import { topics, trends, people } from "./utilities/forum-details.utils";
 import MentorFind from './routes/mentor/mentor.component';
+import ProtectedRoute from './routes/Protected-Routes/ProtectedRoutes';
 
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<Navigate to={'/auth/login'} />}></Route>
+      <Route path='/' element={<Navigate to={'/auth/login'} />} />
       <Route path='auth'>
-        <Route path='login' element={<SignIn />}></Route>
-        <Route path='register' element={<SignUp />}></Route>
+        <Route path='login' element={<SignIn />} />
+        <Route path='register' element={<SignUp />} />
       </Route>
-      <Route path='home' element={<ResponsiveNavBar />}>
-        <Route path='individual' element={<Home />}></Route>
-        <Route path='iprManagement' element={<IprStorage />}></Route>
-        <Route path='patent' element={<Patent />}></Route>
-        <Route path='forum' element={<Forum />}>
-          <Route index element={<TrendingTopics topics={topics} trends={trends} people={people} />}></Route>
-          <Route path='mentor' element={<MentorFind />}></Route>
+      <Route path='home' element={
+        <ResponsiveNavBar />
+      }>
+        <Route path='individual' element={<ProtectedRoute><Home /></ProtectedRoute>} />
+        <Route path='startup' element={<ProtectedRoute><Home /></ProtectedRoute>} />
+        <Route path='mentor' element={<ProtectedRoute><Home /></ProtectedRoute>} />
+        <Route path='investor' element={<ProtectedRoute><Home /></ProtectedRoute>} />
+        <Route path='iprManagement' element={<ProtectedRoute><IprStorage /></ProtectedRoute>} />
+        <Route path='patent' element={<ProtectedRoute><Patent /></ProtectedRoute>} />
+        <Route path='forum' element={<ProtectedRoute><Forum /></ProtectedRoute>}>
+          <Route index element={<ProtectedRoute><TrendingTopics topics={topics} trends={trends} people={people} /></ProtectedRoute>} />
+          <Route path='mentor' element={<ProtectedRoute><MentorFind /></ProtectedRoute>} />
         </Route>
       </Route>
-
     </Routes>
-
   );
 }
 

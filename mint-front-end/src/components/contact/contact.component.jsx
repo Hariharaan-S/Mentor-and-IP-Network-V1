@@ -8,7 +8,7 @@ import Button from "../button/button.component";
 
 const ContactUs = () => {
     return (
-        <StyledContact>
+        <StyledContact id="contact">
             <Grid2 sx={{
                 display: "flex",
                 flexDirection: "row"

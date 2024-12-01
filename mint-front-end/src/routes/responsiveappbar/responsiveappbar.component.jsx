@@ -1,12 +1,23 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import { Outlet } from "react-router";
 import AppBar from "@mui/material/AppBar"
 import { Tab, Tabs, Toolbar, Typography, Box } from "@mui/material";
 import 'boxicons';
-
+import { UserContext } from "../../context/user.context";
+import { useNavigate } from "react-router";
 
 const ResponsiveNavBar = () => {
+    const navigate = useNavigate();
+    const { currentUser, setCurrentUser } = useContext(UserContext);
     const [isScrolled, setIsScrolled] = useState();
+
+    if (currentUser === null) {
+        navigate("/auth/login");
+    }
+
+    const logout = () => {
+        setCurrentUser(null);
+    }
 
     useEffect(() => {
         const handleScroll = () => {
@@ -32,13 +43,18 @@ const ResponsiveNavBar = () => {
                         <Typography>MINT</Typography>
                         <Typography><i class='bx bxs-bot'></i></Typography>
                         <Tabs sx={{ marginLeft: 'auto' }} textColor="#fff">
-                            <Tab label="Home"></Tab>
+                            <Tab label="Home" ></Tab>
                             <Tab label="What we do"></Tab>
                             <Tab label="Services"></Tab>
                             <Tab label="Contact"></Tab>
-                            <Typography sx={{ marginTop: '.7rem' }}>Welcome User!</Typography>
-                            <Tab label="Login"></Tab>
-                            <Tab label="Logout"></Tab>
+                            {
+                                currentUser && <Typography sx={{ marginTop: '.7rem' }}>Welcome {currentUser.username}!</Typography>
+
+                            }
+                            {
+                                currentUser !== null ? <Tab onClick={logout} label="Logout"></Tab> : <Tab label="Login"></Tab>
+                            }
+
                         </Tabs>
                     </Toolbar>
                 </Box>

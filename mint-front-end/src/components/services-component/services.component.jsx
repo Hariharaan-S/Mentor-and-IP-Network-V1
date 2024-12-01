@@ -7,7 +7,7 @@ import { FeatureSubTitle, FeatureTitle } from "../features/features.styles";
 
 const Services = () => {
     return (
-        <StyledServices>
+        <StyledServices id="services">
             <Grid2 sx={{
                 display: "flex",
                 flexDirection: "row",

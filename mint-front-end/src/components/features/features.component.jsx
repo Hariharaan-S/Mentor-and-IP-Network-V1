@@ -5,18 +5,21 @@ import { FeatureContainer, FeatureTitle, FeatureSubTitle } from "./features.styl
 
 const Features = ({ items }) => {
     return (
-        <FeatureContainer>
+        <FeatureContainer id="features">
             <FeatureSubTitle>Explore our Features</FeatureSubTitle>
             <FeatureTitle>What MINT Offers<span style={{ color: "hsl(25, 83%, 53%)" }}>.</span></FeatureTitle>
             <Grid2
                 container
                 rowSpacing={1}
                 columnSpacing={7}
-                sx={{ paddingTop: "5rem", paddingBottom: "5rem", paddingLeft: "2rem" }}
+                sx={{ paddingTop: "5rem", paddingBottom: "5rem", paddingLeft: "2rem", flexWrap: "wrap" }}
             >
                 {items.map((el, index) => (
                     <Grid2 item key={index} sx={{
+                        position: "relative",
                         width: "30%",
+                        height: "40vh",
+                        flex: "1 1 20%",
                         padding: "1.5rem",
                         borderRadius: "20px",
                         transition: '.5s ease',
@@ -38,7 +41,7 @@ const Features = ({ items }) => {
                             lineHeight: 1.5,
                             fontSize: ".9rem"
                         }}>{el[1]}</Typography>
-                        <Button styles={{ marginTop: "2rem" }} content={"Explore"} />
+                        <Button styles={{ position: "absolute", bottom: 20 }} content={"Explore"} linkTo={el[2]} />
                     </Grid2>
 
                 ))}
