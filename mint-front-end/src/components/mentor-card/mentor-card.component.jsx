@@ -7,6 +7,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 const MentorCard = ({ media }) => {
+    const goToChat = () => {
+        window.location.href = "http://localhost:3001"
+    }
     return (
         <Card sx={{ width: 300, height: 400, position: "relative" }}>
             <CardMedia
@@ -23,7 +26,7 @@ const MentorCard = ({ media }) => {
                 </Typography>
             </CardContent>
             <CardActions sx={{ position: "absolute", bottom: "1.2rem" }}>
-                <Button size="small">Chat</Button>
+                <Button size="small" onClick={goToChat}>Chat</Button>
             </CardActions>
         </Card>
     );

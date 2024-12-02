@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import HeroContainer from "../../components/hero-container/hero-container.component";
 import Button from "../../components/button/button.component";
-import ChatComponent from "../../components/chatbot/chatbot.component";
 import ProcessPatent from "../../components/patentprocess/patentprocess.component";
 import PrepareImage from "../../asset/prepare.jpg"
 import AskBotImage from "../../asset/askchatbot.jpg"
@@ -11,19 +10,33 @@ import { FeatureContainer, FeatureSubTitle, FeatureTitle } from "../../component
 import Services from "../../components/services-component/services.component";
 import Footer from "../../components/footer/footer.component";
 import ContactUs from "../../components/contact/contact.component";
+import EmbeddedPage from "../../components/embedwebpage/embedwebpage.component";
+import { UserContext } from "../../context/user.context";
+import LoadingIcon from "../../asset/gif/Settings.gif"
 
 const Patent = () => {
+
+    const { setIsLoading, setIsFrameVisible } = useContext(UserContext);
+
+    const handleFrameAndLoading = () => {
+        setIsLoading(true)
+        setInterval(() => {
+            setIsLoading(false);
+            setIsFrameVisible(true)
+        }, 3000);
+    }
+
     return (
         <div>
             <HeroContainer heroContent={{
                 "main": "Patent check, funding, mentorship.",
                 "sub-main": "Effortlessly verify the authenticity of patents and streamline your innovation process with our advanced Patent Check Tool. Simplify your research, ensure compliance, and move forward with confidence on your journey to success."
-            }} otherStyles={{
-                width: "40%",
-                marginLeft: "-44rem"
-            }} children={[<Button content={"Chat Now"} styles={{
-                marginLeft: "2rem"
-            }} />, <ChatComponent />]} />
+            }}
+                otherStyles={{
+                    width: "80vh",
+                }} children={[<Button linkTo={null} onClick={handleFrameAndLoading} content={"Chat Now"} styles={{
+                    marginLeft: "2rem"
+                }} />, LoadingIcon, <EmbeddedPage />]} />
             <FeatureContainer>
                 <FeatureSubTitle>Register your patent now!</FeatureSubTitle>
                 <FeatureTitle>How to Register<span style={{ color: "hsl(25, 83%, 53%)" }}>?</span></FeatureTitle>

@@ -12,13 +12,44 @@ const Home = () => {
     const { currentUser } = useContext(UserContext);
     const userRole = currentUser.role;
     const featureCard = {
-        "individual": [["Unified IP Repository", "Access and manage a comprehensive collection of patents and intellectual property records in one place.", "/home/iprManagement"],
-        ["Interactive Chatbot", "Engage with our AI-powered chatbot to verify patent status and get personalized insights.", "/home/patent"],
-        ["Find mentors,investors and more.", "Get your ideas into action.", "/home/forum"]],
-        "startup": [["Unified IP Repository", "Access and manage a comprehensive collection of patents and intellectual property records in one place.", "/home/iprManagement"],
-        ["Interactive Chatbot", "Engage with our AI-powered chatbot to verify patent status and get personalized insights.", "/home/patent"],
-        ["Boosting Startups", "If chatbot signals green, proceed with register", "/home/startup"],
-        ["Find mentors,investors and more.", "Get your ideas into action.", "/home/forum"]]
+        "individual": [
+            {
+                title: "Unified IP Repository",
+                description: "Access and manage a comprehensive collection of patents and intellectual property records in one place.",
+                route: "/home/iprManagement",
+            },
+            {
+                title: "Interactive Chatbot",
+                description: "Engage with our AI-powered chatbot to verify patent status and get personalized insights.",
+                route: "/home/patent",
+            },
+            {
+                title: "Find mentors, investors and more.",
+                description: "Get your ideas into action.",
+                route: "/home/forum",
+            },
+        ],
+        "startup": [
+            {
+                title: "Unified IP Repository",
+                description: "Access and manage a comprehensive collection of patents and intellectual property records in one place.",
+                route: "/home/iprManagement",
+            },
+            {
+                title: "Interactive Chatbot",
+                description: "Engage with our AI-powered chatbot to verify patent status and get personalized insights.",
+                route: "/home/patent",
+            },
+            {
+                title: "Boosting Startups",
+                description: "If chatbot signals green, proceed with registration.",
+                route: "/home/startup",
+            },
+            {
+                title: "Find mentors, investors and more.",
+                description: "Get your ideas into action.",
+                route: "/home/forum",
+            }]
     }
     return (
         <SyledHome id='home'>

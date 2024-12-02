@@ -143,8 +143,7 @@ def add_ip():
         db.session.add(file)
         db.session.commit()
 
-    return redirect(url_for("patent"))
-
+    return {"message":"Success"}, 200
 
 @app.route("/get/ip", methods=["GET"])
 def get_ip():

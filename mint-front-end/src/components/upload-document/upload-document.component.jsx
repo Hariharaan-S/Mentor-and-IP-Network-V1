@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StyledDocumentContainer, StyledInput } from "./upload-document.styles";
 import Button from "../button/button.component";
 import { sendDocument } from "../../utilities/dataAccessLayer";
+import { StyledButton } from "../button/button.styles";
 
 const UploadDocument = () => {
     const [formData, setFormData] = useState({
@@ -66,8 +67,7 @@ const UploadDocument = () => {
                     onChange={handleChange}
                     required
                 />
-
-                <Button content={"Upload Document"} buttonType={"submit"} />
+                <StyledButton type="submit">Upload Document</StyledButton>
             </form>
         </StyledDocumentContainer>
     );

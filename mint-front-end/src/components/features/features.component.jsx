@@ -2,8 +2,13 @@ import React from "react";
 import { Grid2, Typography } from "@mui/material";
 import Button from "../button/button.component";
 import { FeatureContainer, FeatureTitle, FeatureSubTitle } from "./features.styles";
+import { useNavigate } from "react-router";
 
 const Features = ({ items }) => {
+    const navigate = useNavigate();
+    const handleRoute = (route) => {
+        navigate(route);
+    }
     return (
         <FeatureContainer id="features">
             <FeatureSubTitle>Explore our Features</FeatureSubTitle>
@@ -33,15 +38,15 @@ const Features = ({ items }) => {
                             marginBottom: ".25rem",
                             fontFamily: "Poppins, sans-serif",
                             fontWeight: 600
-                        }} variant="h6">{el[0]}</Typography>
+                        }} variant="h6">{el.title}</Typography>
                         <Typography variant="body1" sx={{
                             fontFamily: "Poppins, sans-serif",
                             color: " hsl(228, 15%, 50%)",
                             fontWeight: 400,
                             lineHeight: 1.5,
                             fontSize: ".9rem"
-                        }}>{el[1]}</Typography>
-                        <Button styles={{ position: "absolute", bottom: 20 }} content={"Explore"} linkTo={el[2]} />
+                        }}>{el.description}</Typography>
+                        <Button key={index} onClick={() => handleRoute(el.route)} styles={{ position: "absolute", bottom: 20 }} content={"Explore"} />
                     </Grid2>
 
                 ))}

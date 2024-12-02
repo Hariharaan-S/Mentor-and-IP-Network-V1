@@ -11,7 +11,7 @@ export const LoginMainContainer = styled.div`
 
 export const LoginContainer = styled.div`
     position: absolute;
-    left: 20%;
+    left: 17%;
     top: 10%;
     background-color: transparent;
     color: white;
@@ -21,7 +21,7 @@ export const LoginContainer = styled.div`
     padding: 5%;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100vh;
+    width: 115vh;
     display: flex;
     flex-direction: row;
     column-gap: 12%;
