@@ -4,8 +4,11 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ServiceImage from "../../asset/indexservices.jpg"
 import { ImageOverlay, StyledImage, StyledServices } from "./services.styles";
 import { FeatureSubTitle, FeatureTitle } from "../features/features.styles";
+import { useTranslation } from "react-i18next";
 
 const Services = () => {
+    const { t } = useTranslation();
+
     return (
         <StyledServices id="services">
             <Grid2 sx={{
@@ -31,9 +34,9 @@ const Services = () => {
                     marginLeft: "2rem"
                 }}>
                     <Grid2 sx={{ width: "80%" }}>
-                        <FeatureSubTitle>Our Services</FeatureSubTitle>
+                        <FeatureSubTitle>{t(`services.subtitle`, { returnObjects: true })}</FeatureSubTitle>
                         <FeatureTitle>
-                            Value We Provide to Innovators<span>.</span>
+                            {t(`services.title`, { returnObjects: true })}<span>.</span>
                         </FeatureTitle>
                     </Grid2>
                     <p class="value__description" style={{

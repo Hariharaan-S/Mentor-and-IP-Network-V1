@@ -5,9 +5,11 @@ import { Tab, Tabs, Toolbar, Typography, Box } from "@mui/material";
 import 'boxicons';
 import { UserContext } from "../../context/user.context";
 import { useNavigate } from "react-router";
+import { useTranslation } from 'react-i18next';
 
 const ResponsiveNavBar = () => {
     const navigate = useNavigate();
+    const { t } = useTranslation();
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const [isScrolled, setIsScrolled] = useState();
 
@@ -43,22 +45,20 @@ const ResponsiveNavBar = () => {
                         <Typography>MINT</Typography>
                         <Typography><i class='bx bxs-bot'></i></Typography>
                         <Tabs sx={{ marginLeft: 'auto' }} textColor="#fff">
-                            <Tab label="Home" ></Tab>
-                            <Tab label="What we do"></Tab>
-                            <Tab label="Services"></Tab>
-                            <Tab label="Contact"></Tab>
+                            <Tab label={t(`menu.Home`, { returnObjects: true })} ></Tab>
+                            <Tab label={t(`menu.What_we_do`, { returnObjects: true })}></Tab>
+                            <Tab label={t(`menu.Services`, { returnObjects: true })}></Tab>
+                            <Tab label={t(`menu.Contact`, { returnObjects: true })}></Tab>
                             {
                                 currentUser && <Typography sx={{ marginTop: '.7rem' }}>Welcome {currentUser.username}!</Typography>
 
                             }
                             {
-                                currentUser !== null ? <Tab onClick={logout} label="Logout"></Tab> : <Tab label="Login"></Tab>
+                                currentUser !== null ? <Tab onClick={logout} label={t(`menu.logout`, { returnObjects: true })}></Tab> : <Tab label="Login"></Tab>
                             }
-
                         </Tabs>
                     </Toolbar>
                 </Box>
-
             </AppBar>
             <Outlet />
         </Fragment >

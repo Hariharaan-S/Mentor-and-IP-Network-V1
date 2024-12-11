@@ -12,7 +12,7 @@ const EmbeddedPage = () => {
                     border: 'none',
                     position: 'absolute',
                     marginLeft: '4rem',
-                    marginTop: '2rem'
+                    marginTop: '4rem'
                 }}
             />
         </div>

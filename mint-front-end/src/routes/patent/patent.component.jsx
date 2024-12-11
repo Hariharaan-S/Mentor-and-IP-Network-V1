@@ -12,7 +12,7 @@ import Footer from "../../components/footer/footer.component";
 import ContactUs from "../../components/contact/contact.component";
 import EmbeddedPage from "../../components/embedwebpage/embedwebpage.component";
 import { UserContext } from "../../context/user.context";
-import LoadingIcon from "../../asset/gif/Settings.gif"
+
 
 const Patent = () => {
 
@@ -33,10 +33,11 @@ const Patent = () => {
                 "sub-main": "Effortlessly verify the authenticity of patents and streamline your innovation process with our advanced Patent Check Tool. Simplify your research, ensure compliance, and move forward with confidence on your journey to success."
             }}
                 otherStyles={{
-                    width: "80vh",
+                    width: "120vh",
+                    textAlign: "center"
                 }} children={[<Button linkTo={null} onClick={handleFrameAndLoading} content={"Chat Now"} styles={{
                     marginLeft: "2rem"
-                }} />, LoadingIcon, <EmbeddedPage />]} />
+                }} />, <EmbeddedPage />]} />
             <FeatureContainer>
                 <FeatureSubTitle>Register your patent now!</FeatureSubTitle>
                 <FeatureTitle>How to Register<span style={{ color: "hsl(25, 83%, 53%)" }}>?</span></FeatureTitle>

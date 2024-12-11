@@ -24,7 +24,7 @@ export const StyledHomeTitle = styled.h1`
 `
 
 export const StyledHomeData = styled.div`
-    padding: 6rem 8rem;
+    padding: 5rem;
 `
 
 export const StyledHomeDescription = styled.p`

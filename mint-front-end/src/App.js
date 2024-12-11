@@ -11,6 +11,8 @@ import TrendingTopics from "./components/trending-topics/trending-topic.componen
 import { topics, trends, people } from "./utilities/forum-details.utils";
 import MentorFind from './routes/mentor/mentor.component';
 import ProtectedRoute from './routes/Protected-Routes/ProtectedRoutes';
+import Startup from './startup/startup.component';
+import StartupFeature from './components/startup-features/startups-features.component';
 
 function App() {
   return (
@@ -32,6 +34,9 @@ function App() {
         <Route path='forum' element={<ProtectedRoute><Forum /></ProtectedRoute>}>
           <Route index element={<ProtectedRoute><TrendingTopics topics={topics} trends={trends} people={people} /></ProtectedRoute>} />
           <Route path='mentor' element={<ProtectedRoute><MentorFind /></ProtectedRoute>} />
+        </Route>
+        <Route path='startupHome' element={<Startup />}>
+          <Route index element={<StartupFeature />} />
         </Route>
       </Route>
     </Routes>

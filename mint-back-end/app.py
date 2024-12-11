@@ -7,6 +7,7 @@ from utils import chat_with_bot
 import mysql.connector
 import uuid
 from flask_cors import CORS
+from flask_googletrans import translator
 
 
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png'}
@@ -31,6 +32,10 @@ class File(db.Model):
 
 app = Flask(__name__)
 
+ts = translator(app)
+
+
+
 CORS(app)
 
 app.secret_key = "AbCdEfjrjrj45554xzzxz"
@@ -53,24 +58,35 @@ def auth_login():
     username = body.get('username')
     password = body.get('password')
     role = body.get('role')
-    
-    if not username or not password:
-        return {"message": "Username and password are required","statusCode":401}
-    
-    cursor.execute("SELECT username, password, role FROM user_register WHERE username=%s AND role=%s", (username, role))
-    result = cursor.fetchone()
-    
-    if result:
-        stored_username, stored_password, stored_role = result
-        
-        if password == stored_password:
-            session['user'] = stored_username
-            session['role'] = stored_role
-            return {"message": "Login successful","statusCode":200}
+
+    # Validate input
+    if not username or not password or not role:
+        return {"message": "Username, password, and role are required", "statusCode": 400}
+
+    try:
+        # Query database for user
+        cursor.execute(
+            "SELECT username, password, role FROM user_register WHERE username=%s AND role=%s", 
+            (username, role)
+        )
+        result = cursor.fetchone()
+
+        if result:
+            stored_username, stored_password, stored_role = result
+
+            # Check if the password matches
+            if password == stored_password:
+                session['user'] = stored_username
+                session['role'] = stored_role
+                return {"message": "Login successful", "statusCode": 200}
+            else:
+                return {"message": "Invalid password", "statusCode": 401}
         else:
-            return {"message": "Invalid password","statusCode":401}
-    else:
-        return {"message": "Invalid username or role","statusCode":401}
+            return {"message": "Invalid username or role", "statusCode": 401}
+
+    except Exception as e:
+        print(f"Error during login: {e}")
+        return {"message": "Internal server error", "statusCode": 500}
 
 
 @app.route("/registertodatabase",methods=["POST"])
@@ -94,7 +110,7 @@ def registertodatabase():
             (id, username, password, role, domain, experience, budget)
         )
     mysql_db.commit()
-    return "success",200
+    return {"message":"success", "statusCode": 200}
 
 @app.route("/find-mentor", methods=["POST"])
 def find_mentor():

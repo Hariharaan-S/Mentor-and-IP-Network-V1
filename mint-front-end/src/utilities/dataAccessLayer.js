@@ -10,6 +10,20 @@ export const login = async (username, password, role) => {
     }).then(res => res.json()).then(data => { return data.statusCode === 200 })
 }
 
+export const registerWithMint = async (data) => {
+    fetch("http://localhost:5000/registertodatabase", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    }).then((res) => res.json()).then(resData => {
+        console.log(resData);
+
+        return resData.statusCode === 200
+    })
+}
+
 
 export const sendDocument = async (data) => {
     try {

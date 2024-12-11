@@ -78,7 +78,7 @@ const SignIn = () => {
                     </StyledForm>
 
                     <p>
-                        Don't have an account? <a href="/register" id="registerLink">Register here</a>
+                        Don't have an account? <a href="/auth/register" id="registerLink">Register here</a>
                     </p>
                 </div>
             </LoginContainer>

@@ -3,14 +3,17 @@ import { Grid2, Typography } from "@mui/material";
 import Button from "../button/button.component";
 import { FeatureContainer, FeatureTitle, FeatureSubTitle } from "./features.styles";
 import { useNavigate } from "react-router";
+import { useTranslation } from "react-i18next";
 
-const Features = ({ items }) => {
+const Features = ({ type, styles }) => {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const handleRoute = (route) => {
         navigate(route);
     }
+    const cards = t(`featureCard.${type}`, { returnObjects: true });
     return (
-        <FeatureContainer id="features">
+        <FeatureContainer id="features" style={styles}>
             <FeatureSubTitle>Explore our Features</FeatureSubTitle>
             <FeatureTitle>What MINT Offers<span style={{ color: "hsl(25, 83%, 53%)" }}>.</span></FeatureTitle>
             <Grid2
@@ -19,7 +22,7 @@ const Features = ({ items }) => {
                 columnSpacing={7}
                 sx={{ paddingTop: "5rem", paddingBottom: "5rem", paddingLeft: "2rem", flexWrap: "wrap" }}
             >
-                {items.map((el, index) => (
+                {cards && cards.map((el, index) => (
                     <Grid2 item key={index} sx={{
                         position: "relative",
                         width: "30%",
