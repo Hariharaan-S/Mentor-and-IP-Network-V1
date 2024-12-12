@@ -2,6 +2,7 @@ import './App.css';
 import SignIn from './components/sign-in/sign-in.component';
 import SignUp from './components/register/register.component';
 import { Routes, Route, Navigate } from "react-router-dom";
+import Redirect from "react-router"
 import Home from './routes/home/home.component';
 import ResponsiveNavBar from './routes/responsiveappbar/responsiveappbar.component';
 import IprStorage from './routes/ipr-storage/ipr-storage.component';
@@ -11,8 +12,9 @@ import TrendingTopics from "./components/trending-topics/trending-topic.componen
 import { topics, trends, people } from "./utilities/forum-details.utils";
 import MentorFind from './routes/mentor/mentor.component';
 import ProtectedRoute from './routes/Protected-Routes/ProtectedRoutes';
-import Startup from './startup/startup.component';
+import Startup from './components/startup/startup.component';
 import StartupFeature from './components/startup-features/startups-features.component';
+import RegisterType from './components/registertype/registertype.component';
 
 function App() {
   return (
@@ -20,8 +22,9 @@ function App() {
       <Route path='/' element={<Navigate to={'/auth/login'} />} />
       <Route path='auth'>
         <Route path='login' element={<SignIn />} />
-        <Route path='register' element={<SignUp />} />
+        <Route path='register' element={<RegisterType />} />
       </Route>
+      <Route path='individual' element={<SignUp />}></Route>
       <Route path='home' element={
         <ResponsiveNavBar />
       }>

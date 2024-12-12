@@ -10,7 +10,7 @@ export const RegisterMainContainer = styled.div`
 
 export const RegisterContainer = styled.div`
     position: absolute;
-    left:20%;
+    left: 15%;
     top: 5%;
     color: white;
     padding: 5px;
@@ -20,7 +20,7 @@ export const RegisterContainer = styled.div`
     padding: 5%;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100vh;
+    width: 120vh;
     height: 70vh;
 `
 
